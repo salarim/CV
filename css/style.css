@@ -37,6 +37,14 @@ h4#main-desc {
     font-size: 22px;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #515151;
+}
+
 @media(max-width:568px) {
     div#container {
         width: 384px;
