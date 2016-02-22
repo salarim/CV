@@ -1,19 +1,96 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <title>.:: moeenz@github ::.</title>
-        <link rel="shortcut icon" href="img/favicon.png" type="image/png">
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-        <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="img/moeenz.png" type="image/png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>@moeenz :: Moeen Zamani</title>
+        <link rel="stylesheet" href="styles/main.css">
     </head>
     <body>
-        <div id="container">
-            <div>
-                <img id="main-avatar" width="100%" src="img/moeen_avatar.png">
+        <section id="main">
+            <img id="avatar" src="img/moeenz.png" alt="Moeen Zamani">
+            <h1>Moeen Zamani <span class="smaller">{developer || researcher}</span></h1>
+            <div class="terminal">
+                <p> Greetings! You've reached moeenz's personal website terminal, Enjoy! </p>
+                <p> Enter 'help' to see the list of commands if you've never been here before.</p>
+                <div class="seperator"></div>
+                <ul id="terms">
+                    <li class="command">
+                        <p> guest@moeenz $ <input class="command-input" type="text"></p>
+                    </li>
+                </ul>
             </div>
-            <strong><a href="https://github.com/moeenz"><h2 id="main-header">moeenz</h2></a></strong>
-            <h4 id="main-desc">Universal Creator</h4>
-        </div>
+        </section>
+        <section id="goodbye" style="display:none;">
+            <div class="center">
+                <h1>Goodbye</h1>
+            </div>
+        </section>
+
+        <script type="text/javascript" src="scripts/jquery.min.js"></script>
+        <script>
+            var map = {
+                "help": "These are the valid functions:     \
+                            <p> </p> \
+                            <p>1) get_email</p>     \
+                            <p>2) get_education</p> \
+                            <p>3) get_interests</p> \
+                            <p>4) get_works</p> \
+                            <p>5) time</p> \
+                            <p>6) clear </p> \
+                            <p>7) exit</p>",
+                "get_email": "moeen.zamani@gmail.com",
+                "get_education": "Bachelor of Computer Science, Sharif University of Technology",
+                "get_interests": "<p>I Love creating new things or re-inventing the wheel (if there's a knowledge gain in it)</p>    \
+                    <p>Mainly I do web and mobile apps, and sometimes system apps</p>    \
+                    <p>I'm not clear about what might be my exact field of research as I'm always looking forward to learning</p> \
+                    <p>new things and can't decide. But to this day I've enjoyed Computer Vision (all in for Kinect stuffs), Machine Learning,</p> \
+                    <p>Computer Networks and Operating systems.</p>",
+                "get_works": "<p>These are some of the works I've done recently</p> \
+                    <p><a href='https://djacket.github.io'>1) Djacket</a></p> \
+                    <p><a href='#'>2) Movist</a></p>"
+            };
+
+            $(document).on('ready', function () {
+                var start = '<li class="command"><p>';
+                var end = '</p><p> guest@moeenz $ <input class="command-input" type="text"></p></li>';
+                $('.command-input').focus();
+
+                $('.terminal').on('click', function () {
+                    $('.command-input').last().focus();
+                });
+
+                $('.terminal').on('keypress', function (e) {
+                    if (e.keyCode == 13) {
+                        var cmd = $('.command-input').last().val();
+                        if (cmd == "help") {
+                            $('ul#terms').append(start + map.help + end);
+                        } else if (cmd == "get_email") {
+                            $('ul#terms').append(start + map.get_email + end);
+                        } else if (cmd == "get_education") {
+                            $('ul#terms').append(start + map.get_education + end);
+                        }  else if (cmd == "get_interests") {
+                            $('ul#terms').append(start + map.get_interests + end);
+                        } else if (cmd == "get_works") {
+                            $('ul#terms').append(start + map.get_works + end);
+                        } else if (cmd == "time") {
+                            $('ul#terms').append(start + new Date() + end);
+                        } else if (cmd == "clear") {
+                            var cmds = $('ul#terms li');
+                            for (var i = 1; i < cmds.length; i++) {
+                                $(cmds[i]).remove();
+                            }
+                            $(cmds[0]).html('<p> guest@moeenz$ <input class="command-input" type="text"></p>');
+                        } else if (cmd == "exit") {
+                            $('#main').css('display', 'none');
+                            $('#goodbye').css('display', 'block');
+                        } else {
+                            $('ul#terms').append(start + "You didn't listen to what I said, did you? Type 'help'" + end);
+                        }
+                        $('.command-input').last().focus();
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
