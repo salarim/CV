@@ -9,14 +9,14 @@
     <body>
         <section id="main">
             <img id="avatar" src="img/moeenz.png" alt="Moeen Zamani">
-            <h1>Moeen Zamani <span class="smaller">{developer || researcher}</span></h1>
+            <h1>Mohammad Hadi Salari <span class="smaller">{developer || researcher}</span></h1>
             <div class="terminal">
-                <p> Greetings! You've reached moeenz's personal website terminal, Enjoy! </p>
+                <p> Greetings! You've reached Hadi's personal website terminal, Enjoy! </p>
                 <p> Enter 'help' to see the list of commands if you've never been here before.</p>
                 <div class="seperator"></div>
                 <ul id="terms">
                     <li class="command">
-                        <p> guest@moeenz $ <input class="command-input" type="text"></p>
+                        <p> guest@hadi $ <input class="command-input" type="text"></p>
                     </li>
                 </ul>
             </div>
@@ -39,21 +39,16 @@
                             <p>5) time</p> \
                             <p>6) clear </p> \
                             <p>7) exit</p>",
-                "get_email": "moeen.zamani@gmail.com",
+                "get_email": "salari.m1375@gmail.com",
                 "get_education": "Bachelor of Computer Science, Sharif University of Technology",
-                "get_interests": "<p>I Love creating new things or re-inventing the wheel (if there's a knowledge gain in it)</p>    \
-                    <p>Mainly I do web and mobile apps, and sometimes system apps</p>    \
-                    <p>I'm not clear about what might be my exact field of research as I'm always looking forward to learning</p> \
-                    <p>new things and can't decide. But to this day I've enjoyed Computer Vision (all in for Kinect stuffs), Machine Learning,</p> \
-                    <p>Computer Networks and Operating systems.</p>",
-                "get_works": "<p>These are some of the works I've done recently</p> \
-                    <p><a href='https://djacket.github.io'>1) Djacket</a></p> \
-                    <p><a href='#'>2) Movist</a></p>"
+                "get_interests": "<p>I love learn new things</p>    \
+                    <p>My main interest is machine learning and I'm trying to learn more and more in this field</p>
+                "get_works": "<p>I'm a software engineer in Cafe bazaar company</p>
             };
 
             $(document).on('ready', function () {
                 var start = '<li class="command"><p>';
-                var end = '</p><p> guest@moeenz $ <input class="command-input" type="text"></p></li>';
+                var end = '</p><p> guest@hadi $ <input class="command-input" type="text"></p></li>';
                 $('.command-input').focus();
 
                 $('.terminal').on('click', function () {
@@ -80,7 +75,7 @@
                             for (var i = 1; i < cmds.length; i++) {
                                 $(cmds[i]).remove();
                             }
-                            $(cmds[0]).html('<p> guest@moeenz$ <input class="command-input" type="text"></p>');
+                            $(cmds[0]).html('<p> guest@hadi <input class="command-input" type="text"></p>');
                         } else if (cmd == "exit") {
                             $('#main').css('display', 'none');
                             $('#goodbye').css('display', 'block');
